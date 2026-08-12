@@ -7,20 +7,16 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 在此加入您的建置 / 測試步驟
-      # 例如：
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 20
-      # - name: Install & Test
-      #   run: npm ci && npm test
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Placeholder
-        run: echo "CI 框架已就緒，請在上方加入實際的建置/測試步驟"
+      - name: Verify E10 dashboard (load data, clean, AI checks)
+        run: node ci-check.cjs
