@@ -1,0 +1,10 @@
+{
+  "name": "e10-npi-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "E10 新品導入問題追蹤 — 單檔 HTML 看板與 CI 自動檢查",
+  "scripts": {
+    "check": "node ci-check.cjs",
+    "test": "node ci-check.cjs"
+  }
+}
