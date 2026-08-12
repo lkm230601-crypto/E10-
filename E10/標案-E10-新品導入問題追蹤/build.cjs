@@ -1,0 +1,10 @@
+const fs = require('fs');
+const dir = 'C:/Users/lekum/Desktop/0812/0812E10/E10/標案-E10-新品導入問題追蹤';
+const main = fs.readFileSync(dir + '/data/主檔.csv', 'utf8');
+const ref = fs.readFileSync(dir + '/data/對照表.csv', 'utf8');
+let html = fs.readFileSync(dir + '/index.html', 'utf8');
+html = html.replace('__MAIN__', JSON.stringify(main));
+html = html.replace('__REF__', JSON.stringify(ref));
+fs.writeFileSync(dir + '/index.html', html, 'utf8');
+console.log('injected. main bytes:', main.length, 'ref bytes:', ref.length);
+console.log('placeholders left:', (html.match(/__MAIN__|__REF__/g) || []).length);
